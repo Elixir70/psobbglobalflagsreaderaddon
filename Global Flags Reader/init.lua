@@ -303,12 +303,12 @@ return
     {
         init                      = init,
     },
-	
-	-- In case someone wants to pcall/require this file
-	ShiftValueAccordingToMask     = ShiftValueAccordingToMask,
-	ReadGlobalFlagsPointer        = ReadGlobalFlagsPointer,
-	ReadGlobalFlagWithPointer     = ReadGlobalFlagWithPointer,
-	ReadGlobalFlag                = ReadGlobalFlag,
-	ReadGlobalFlagBitsWithPointer = ReadGlobalFlagBitsWithPointer,
-	ReadGlobalFlagBits            = ReadGlobalFlagBits,
+    
+    -- In case someone wants to pcall/require this file
+    ShiftValueAccordingToMask     = ShiftValueAccordingToMask,
+    ReadGlobalFlagsPointer        = ReadGlobalFlagsPointer,
+    ReadGlobalFlagWithPointer     = ReadGlobalFlagWithPointer,
+    ReadGlobalFlag                = ReadGlobalFlag,
+    ReadGlobalFlagBitsWithPointer = ReadGlobalFlagBitsWithPointer,
+    ReadGlobalFlagBits            = ReadGlobalFlagBits,
 }
