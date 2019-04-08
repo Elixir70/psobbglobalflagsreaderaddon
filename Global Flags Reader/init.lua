@@ -21,13 +21,13 @@ local ConfigurationWindow
 
 -- Defaults for some flags that I included. Description, Flag Number, bitmask, and whether to display hex
 local _FlagsReaderDefaultFlags = {
-    { description="Lucky Coins",                      flagNum=0xB, flagMask=0x000001FC, hexdisplay=false }, 
-    { description="MA4 Tickets",                      flagNum=0xF, flagMask=0x000000FF, hexdisplay=false },
-    { description="MA4 Kills (Total)",                flagNum=0xE, flagMask=0x7FFFFFFF, hexdisplay=false },
-    { description="MA4 Kills (Central Dome)",         flagNum=0x3, flagMask=0x7FFFFFFF, hexdisplay=false },
-    { description="MA4 Kills (Gal Da Val)",           flagNum=0x4, flagMask=0x7FFFFFFF, hexdisplay=false },
-    { description="MA4 Kills (Crater)",               flagNum=0x8, flagMask=0x7FFFFFFF, hexdisplay=false },
-    { description="AOL CUP -Sunset Base- (Mag Cell)", flagNum=0x9, flagMask=0x10000000, hexdisplay=false },
+    { description="Lucky Coins",                      flagNum=0xB, flagMask=0x000001FC, enable=true,  hexdisplay=false }, 
+    { description="MA4 Tickets",                      flagNum=0xF, flagMask=0x000000FF, enable=true,  hexdisplay=false },
+    { description="MA4 Kills (Total)",                flagNum=0xE, flagMask=0x7FFFFFFF, enable=false, hexdisplay=false },
+    { description="MA4 Kills (Central Dome)",         flagNum=0x3, flagMask=0x7FFFFFFF, enable=false, hexdisplay=false },
+    { description="MA4 Kills (Gal Da Val)",           flagNum=0x4, flagMask=0x7FFFFFFF, enable=false, hexdisplay=false },
+    { description="MA4 Kills (Crater)",               flagNum=0x8, flagMask=0x7FFFFFFF, enable=false, hexdisplay=false },
+    { description="AOL CUP -Sunset Base- (Mag Cell)", flagNum=0x9, flagMask=0x10000000, enable=false, hexdisplay=false },
 }
 
 local _FlagsReaderDefaultOptions = {
@@ -204,31 +204,31 @@ end
 
 local function PresentTopLevel()
     local ptr = ReadGlobalFlagsPointer()
-    if ptr == 0 then
-        imgui.Text("No pointer")
-    else
+    if ptr ~= 0 then
         local columnCount = 2
         imgui.Columns(columnCount)
         
         -- Set second column starting at descriptionWidth% * windowwidth
         imgui.SetColumnOffset(1, 0.01 * options.descriptionWidth * imgui.GetWindowWidth())
         for k,v in pairs(options.globalFlags) do
-            -- Description column first
-            imgui.Text(v.description)            
-            imgui.NextColumn()
+            if v.enable then
+                -- Description column first
+                imgui.Text(v.description)            
+                imgui.NextColumn()
             
-            -- Value column next
-            local flagValue = ReadGlobalFlagBitsWithPointer(ptr, v.flagNum, v.flagMask)
-            local s 
-            if v.hexdisplay then
-                s = string.format("0x%X", flagValue)
-            else
-                s = string.format("%i", flagValue)
+                -- Value column next
+                local flagValue = ReadGlobalFlagBitsWithPointer(ptr, v.flagNum, v.flagMask)
+                local s 
+                if v.hexdisplay then
+                    s = string.format("0x%X", flagValue)
+                else
+                    s = string.format("%i", flagValue)
+                end
+                imgui.Text(s)
+            
+                -- Go back to first column
+                imgui.NextColumn()
             end
-            imgui.Text(s)
-            
-            -- Go back to first column
-            imgui.NextColumn()
         end
     end
 end
