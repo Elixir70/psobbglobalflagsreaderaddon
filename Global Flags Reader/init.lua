@@ -260,6 +260,9 @@ local function present()
     imgui.Begin(addonName, nil, GetWindowOptions())
     PresentTopLevel()
     imgui.End()
+	if options.targetTransparentWindow == true then
+        imgui.PopStyleColor()
+    end
 end
 
 
