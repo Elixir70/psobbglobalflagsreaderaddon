@@ -142,7 +142,6 @@ local function ConfigurationWindow(configuration, addonName)
                     end
                     
                     local flagMask
-                    local flagMaskCheck
                     imgui.PushItemWidth(0.20 * imgui.GetWindowWidth())
                     success, flagMask = imgui.InputInt("Flag Bitmask (Decimal)", _configuration.globalFlags[i].flagMask)
                     imgui.PopItemWidth()
