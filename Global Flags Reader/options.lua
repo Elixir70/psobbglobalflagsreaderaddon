@@ -4,11 +4,11 @@ return
     descriptionWidth = 66,
     noResize = "NoResize",
     W = 150,
-    noMove = "NoMove",
+    noMove = "",
     H = 48,
     X = 0,
-    configurationWindowEnable = false,
     noTitleBar = "NoTitleBar",
+    anchor = 3,
     Y = 0,
     transparentWindow = false,
     globalFlags = 
@@ -91,5 +91,5 @@ return
             description = "MA2v2 Tickets",
         },
     },
-    anchor = 3,
+    configurationWindowEnable = false,
 }

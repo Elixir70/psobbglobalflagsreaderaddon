@@ -147,7 +147,8 @@ local function PrintOptions()
 end
 
 local function GetWindowOptions()
-    return { options.noMove, options.noResize, options.noTitleBar, options.transparentWindow }
+    local opts = { options.noMove, options.noResize, options.noTitleBar }
+    return opts
 end
 
 -- Given a value derived from a bitmask, figure out how much to shift
@@ -232,13 +233,16 @@ local function PresentTopLevel()
 end
 
 local function present()
+
     if options.configurationWindowEnable then
         ConfigurationWindow.open = true
         options.configurationWindowEnable = false
     end
     
+    local configWindowChanged = false
     ConfigurationWindow.Update()
     if ConfigurationWindow.changed then
+        configWindowChanged = true
         ConfigurationWindow.changed = false
         SaveOptions(options, optionsFileName)
     end
@@ -251,11 +255,10 @@ local function present()
     if options.transparentWindow == true then
         imgui.PushStyleColor("WindowBg", 0.0, 0.0, 0.0, 0.0)
     end
-    
-    local ps = lib_helpers.GetPosBySizeAndAnchor(options.X, options.Y, options.W, options.H, options.anchor)
-    imgui.SetNextWindowPos(ps[1], ps[2], "Always");
-    imgui.SetNextWindowSize(options.W, options.H, "Always");
+        
     imgui.Begin(addonName, nil, GetWindowOptions())
+    print(configWindowChanged)
+    lib_helpers.WindowPositionAndSize(addonName, options.X, options.Y, options.W, options.H, options.anchor, "", configWindowChanged)
     PresentTopLevel()
     imgui.End()
     if options.transparentWindow == true then
