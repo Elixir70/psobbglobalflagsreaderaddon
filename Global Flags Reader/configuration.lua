@@ -122,7 +122,10 @@ local function ConfigurationWindow(configuration, addonName)
 
                     local descBuf
                     imgui.PushItemWidth(0.40 * imgui.GetWindowWidth())
-                    success, descBuf = imgui.InputText("Description", _configuration.globalFlags[i].description, 80)
+                    if _configuration.globalFlags[i].descriptionSave == nil then
+                        _configuration.globalFlags[i].descriptionSave = _configuration.globalFlags[i].description
+                    end
+                    success, descBuf = imgui.InputText("Description", _configuration.globalFlags[i].descriptionSave, 80)
                     imgui.PopItemWidth()
                     if success then
                         -- Save it in scratch field so that we don't generate a new ID for the TreeNode (causing it to 

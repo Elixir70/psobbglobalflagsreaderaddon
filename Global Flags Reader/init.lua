@@ -122,14 +122,12 @@ local function SaveOptions(tbl, fileName)
     
     -- First remove the empty flags
     for i,v in ipairs(options.globalFlags) do
+        if v.descriptionSave ~= nil then
+            v.description = v.descriptionSave
+            v.descriptionSave = nil
+        end
         if v.description == "" or string.len(v.description) == 0 then
             table.remove(options.globalFlags, i)
-        else
-            -- Move the description save buffers to the description
-            if v.descriptionSave ~= nil then
-                v.description = v.descriptionSave
-                v.descriptionSave = nil
-            end
         end
     end
     
@@ -293,7 +291,7 @@ local function init()
     return 
     {
         name = 'Global Flags Reader',
-        version = '0.5.0',
+        version = '0.5.1',
         author = 'Ender',
         present = present,
         toggleable = true,
