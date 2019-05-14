@@ -257,7 +257,6 @@ local function present()
     end
         
     imgui.Begin(addonName, nil, GetWindowOptions())
-    print(configWindowChanged)
     lib_helpers.WindowPositionAndSize(addonName, options.X, options.Y, options.W, options.H, options.anchor, "", configWindowChanged)
     PresentTopLevel()
     imgui.End()
@@ -294,7 +293,7 @@ local function init()
     return 
     {
         name = 'Global Flags Reader',
-        version = '0.5.1',
+        version = '0.5.2',
         author = 'Ender',
         present = present,
         toggleable = true,
