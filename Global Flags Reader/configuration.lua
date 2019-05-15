@@ -7,7 +7,7 @@ local function ConfigurationWindow(configuration, addonName)
     {
         title = addonName .. " - Configuration",
         open = false,
-        changed = false,
+        changed = true,
     }
 
     local _configuration = configuration

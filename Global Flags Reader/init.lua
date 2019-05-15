@@ -257,8 +257,8 @@ local function present()
     end
         
     imgui.Begin(addonName, nil, GetWindowOptions())
-    lib_helpers.WindowPositionAndSize(addonName, options.X, options.Y, options.W, options.H, options.anchor, "", configWindowChanged)
     PresentTopLevel()
+    lib_helpers.WindowPositionAndSize(addonName, options.X, options.Y, options.W, options.H, options.anchor, "", configWindowChanged)
     imgui.End()
     if options.transparentWindow == true then
         imgui.PopStyleColor()
@@ -283,7 +283,7 @@ end
 
 local function init()
     ConfigurationWindow = cfg.ConfigurationWindow(options, addonName)
-    
+
     local function mainMenuButtonHandler()
         ConfigurationWindow.open = not ConfigurationWindow.open
     end
