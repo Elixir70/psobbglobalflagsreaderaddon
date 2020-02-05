@@ -73,7 +73,7 @@ local _FlagsReaderDefaultOptions = {
     {"noResize", ""},                          -- If set, no resizing the window
     {"noMove", ""},                            -- If set, no moving the window
     {"transparentWindow", false},              -- If true, window's background style is invisible
-	{"AlwaysAutoResize", ""},                  -- If set, resize the addon based on the items. Can be nice for adding flags temporarily
+    {"AlwaysAutoResize", ""},                  -- If set, resize the addon based on the items. Can be nice for adding flags temporarily
     {"descriptionWidth", 75},                  -- Width of the flag description field as a % of the window width.
     {"globalFlags", _FlagsReaderDefaultFlags}, -- The flags. Defaults to the ones above.
 }
@@ -150,8 +150,6 @@ end
 
 -- Save options to the file. Does some cleanup for hacks and removing empty flags.
 local function SaveOptions(tbl, fileName)
-    --print(addonName, "Saving Options")
-    
     -- First remove the empty flags
     for i,v in ipairs(options.globalFlags) do
         if v.descriptionSave ~= nil then
@@ -329,7 +327,7 @@ local function init()
     
     core_mainmenu.add_button(addonName, mainMenuButtonHandler)
     
-    return 
+    return
     {
         name = 'Global Flags Reader',
         version = '1.0.0',
@@ -339,7 +337,7 @@ local function init()
     }
 end
 
-return 
+return
 {
     __addon = 
     {
