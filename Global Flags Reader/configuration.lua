@@ -154,6 +154,16 @@ local function ConfigurationWindow(configuration, addonName)
                         end
                     end
                     
+                    local flagMax
+                    imgui.PushItemWidth(0.25 * imgui.GetWindowWidth())
+                    success, flagMax = imgui.InputInt("Flag Maximum (Decimal)", _configuration.globalFlags[i].flagMax)
+                    imgui.PopItemWidth()
+                    if success then
+                        if flagMax ~= nil and 0 <= flagMax and flagMax ~= _configuration.globalFlags[i].flagMax then
+                            _configuration.globalFlags[i].flagMax = flagMax
+                        end
+                    end
+                    
                     if imgui.Checkbox("Display as Hex?", _configuration.globalFlags[i].hexdisplay) then
                         _configuration.globalFlags[i].hexdisplay = not _configuration.globalFlags[i].hexdisplay
                     end
@@ -164,7 +174,7 @@ local function ConfigurationWindow(configuration, addonName)
             end
             
             if imgui.Button("New Global Flag") then
-                local newFlag = {description="(Empty)", flagNum=0x0, flagMask=0x0, hexdisplay=false}
+                local newFlag = {description="(Empty)", flagNum=0x0, flagMask=0x0, flagMax=0, enable=false, hexdisplay=false}
                 _configuration.globalFlags[#_configuration.globalFlags+1] = newFlag
                 _configuration.changed = true
                 this.changed = true
