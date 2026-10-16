@@ -21,44 +21,44 @@ local ConfigurationWindow
 -- Defaults for some known flags that I included. 
 -- Description, Flag Number, bitmask, and whether to display hex
 local _FlagsReaderDefaultFlags = {
-    { description="Lucky Coins",                      flagNum=0xB, flagMask=0x000001FC, enable=true,  hexdisplay=false }, 
-    { description="MA4 Tickets",                      flagNum=0xF, flagMask=0x000000FF, enable=true,  hexdisplay=false },
-    { description="MA4 Kills (Total)",                flagNum=0xE, flagMask=0x7FFFFFFF, enable=false, hexdisplay=false },
-    { description="MA4 Kills (Central Dome)",         flagNum=0x3, flagMask=0x7FFFFFFF, enable=false, hexdisplay=false },
-    { description="MA4 Kills (Gal Da Val)",           flagNum=0x4, flagMask=0x7FFFFFFF, enable=false, hexdisplay=false },
-    { description="MA4 Kills (Crater)",               flagNum=0x8, flagMask=0x7FFFFFFF, enable=false, hexdisplay=false },
-    { description="MA4 (SAMURAI ARMOR)",              flagNum=0xF, flagMask=0x00000800, enable=false, hexdisplay=false },
-    { description="MA4 (GIRASOLE)",                   flagNum=0xF, flagMask=0x00000200, enable=false, hexdisplay=false },
-    { description="MA4 (FRIEND RING)",                flagNum=0xF, flagMask=0x00000400, enable=false, hexdisplay=false },
-    { description="MA4 (PHOTON CRYSTAL)",             flagNum=0xF, flagMask=0x00000100, enable=false, hexdisplay=false },
-    { description="AOL CUP -Sunset Base- (Mag Cell)", flagNum=0x9, flagMask=0x10000000, enable=false, hexdisplay=false },
-    { description="AOL CUP -Sunset Base- (Ruins)",    flagNum=0x9, flagMask=0x20000000, enable=false, hexdisplay=false },
-    { description="MA1v2 Points",                     flagNum=0x9, flagMask=0x00003FFF, enable=false, hexdisplay=false },
-    { description="MA1v2 Tickets",                    flagNum=0xA, flagMask=0x7FC00000, enable=false, hexdisplay=false },
-    { description="MA2v2 Points",                     flagNum=0x9, flagMask=0x0FFFC000, enable=false, hexdisplay=false },
-    { description="MA2v2 Tickets",                    flagNum=0xA, flagMask=0x7FC00000, enable=false, hexdisplay=false },
-    { description="Heart of HUmar",                   flagNum=0xA, flagMask=0x00000001, enable=false, hexdisplay=false },
-    { description="Heart of HUnewearl",               flagNum=0xA, flagMask=0x00000002, enable=false, hexdisplay=false },
-    { description="Heart of HUcast",                  flagNum=0xA, flagMask=0x00000004, enable=false, hexdisplay=false },
-    { description="Heart of HUcaseal",                flagNum=0xA, flagMask=0x00000008, enable=false, hexdisplay=false },
-    { description="Heart of RAmar",                   flagNum=0xA, flagMask=0x00000010, enable=false, hexdisplay=false },
-    { description="Heart of RAmarl",                  flagNum=0xA, flagMask=0x00000020, enable=false, hexdisplay=false },
-    { description="Heart of RAcast",                  flagNum=0xA, flagMask=0x00000040, enable=false, hexdisplay=false },
-    { description="Heart of RAcaseal",                flagNum=0xA, flagMask=0x00000080, enable=false, hexdisplay=false },
-    { description="Heart of FOmar",                   flagNum=0xA, flagMask=0x00000100, enable=false, hexdisplay=false },
-    { description="Heart of FOmarl",                  flagNum=0xA, flagMask=0x00000200, enable=false, hexdisplay=false },
-    { description="Heart of FOnewm",                  flagNum=0xA, flagMask=0x00000400, enable=false, hexdisplay=false },
-    { description="Heart of FOnewearl",               flagNum=0xA, flagMask=0x00000800, enable=false, hexdisplay=false },
-    { description="Heart of Viridia",                 flagNum=0xA, flagMask=0x00001000, enable=false, hexdisplay=false },
-    { description="Heart of Greenill",                flagNum=0xA, flagMask=0x00002000, enable=false, hexdisplay=false },
-    { description="Heart of Skyly",                   flagNum=0xA, flagMask=0x00004000, enable=false, hexdisplay=false },
-    { description="Heart of Bluefull",                flagNum=0xA, flagMask=0x00008000, enable=false, hexdisplay=false },
-    { description="Heart of Purplenum",               flagNum=0xA, flagMask=0x00010000, enable=false, hexdisplay=false },
-    { description="Heart of Pinkal",                  flagNum=0xA, flagMask=0x00020000, enable=false, hexdisplay=false },
-    { description="Heart of Redria",                  flagNum=0xA, flagMask=0x00040000, enable=false, hexdisplay=false },
-    { description="Heart of Oran",                    flagNum=0xA, flagMask=0x00080000, enable=false, hexdisplay=false },
-    { description="Heart of Yellowboze",              flagNum=0xA, flagMask=0x00100000, enable=false, hexdisplay=false },
-    { description="Heart of Whitill",                 flagNum=0xA, flagMask=0x00200000, enable=false, hexdisplay=false },
+    { description="Lucky Coins",                      flagNum=0xB, flagMask=0x000001FC, flagMax=100, enable=true,  hexdisplay=false }, 
+    { description="MA4 Tickets",                      flagNum=0xF, flagMask=0x000000FF, flagMax=255, enable=true,  hexdisplay=false },
+    { description="MA4 Kills (Total)",                flagNum=0xE, flagMask=0x7FFFFFFF, flagMax=0, enable=false, hexdisplay=false },
+    { description="MA4 Kills (Central Dome)",         flagNum=0x3, flagMask=0x7FFFFFFF, flagMax=0, enable=false, hexdisplay=false },
+    { description="MA4 Kills (Gal Da Val)",           flagNum=0x4, flagMask=0x7FFFFFFF, flagMax=0, enable=false, hexdisplay=false },
+    { description="MA4 Kills (Crater)",               flagNum=0x8, flagMask=0x7FFFFFFF, flagMax=0, enable=false, hexdisplay=false },
+    { description="MA4 (SAMURAI ARMOR)",              flagNum=0xF, flagMask=0x00000800, flagMax=1, enable=false, hexdisplay=false },
+    { description="MA4 (GIRASOLE)",                   flagNum=0xF, flagMask=0x00000200, flagMax=1, enable=false, hexdisplay=false },
+    { description="MA4 (FRIEND RING)",                flagNum=0xF, flagMask=0x00000400, flagMax=1, enable=false, hexdisplay=false },
+    { description="MA4 (PHOTON CRYSTAL)",             flagNum=0xF, flagMask=0x00000100, flagMax=1, enable=false, hexdisplay=false },
+    { description="AOL CUP -Sunset Base- (Mag Cell)", flagNum=0x9, flagMask=0x10000000, flagMax=1, enable=false, hexdisplay=false },
+    { description="AOL CUP -Sunset Base- (Ruins)",    flagNum=0x9, flagMask=0x20000000, flagMax=0, enable=false, hexdisplay=false },
+    { description="MA1v2 Points",                     flagNum=0x9, flagMask=0x00003FFF, flagMax=0, enable=false, hexdisplay=false },
+    { description="MA1v2 Tickets",                    flagNum=0xA, flagMask=0x7FC00000, flagMax=0, enable=false, hexdisplay=false },
+    { description="MA2v2 Points",                     flagNum=0x9, flagMask=0x0FFFC000, flagMax=0, enable=false, hexdisplay=false },
+    { description="MA2v2 Tickets",                    flagNum=0xA, flagMask=0x7FC00000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of HUmar",                   flagNum=0xA, flagMask=0x00000001, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of HUnewearl",               flagNum=0xA, flagMask=0x00000002, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of HUcast",                  flagNum=0xA, flagMask=0x00000004, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of HUcaseal",                flagNum=0xA, flagMask=0x00000008, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of RAmar",                   flagNum=0xA, flagMask=0x00000010, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of RAmarl",                  flagNum=0xA, flagMask=0x00000020, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of RAcast",                  flagNum=0xA, flagMask=0x00000040, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of RAcaseal",                flagNum=0xA, flagMask=0x00000080, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of FOmar",                   flagNum=0xA, flagMask=0x00000100, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of FOmarl",                  flagNum=0xA, flagMask=0x00000200, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of FOnewm",                  flagNum=0xA, flagMask=0x00000400, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of FOnewearl",               flagNum=0xA, flagMask=0x00000800, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Viridia",                 flagNum=0xA, flagMask=0x00001000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Greenill",                flagNum=0xA, flagMask=0x00002000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Skyly",                   flagNum=0xA, flagMask=0x00004000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Bluefull",                flagNum=0xA, flagMask=0x00008000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Purplenum",               flagNum=0xA, flagMask=0x00010000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Pinkal",                  flagNum=0xA, flagMask=0x00020000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Redria",                  flagNum=0xA, flagMask=0x00040000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Oran",                    flagNum=0xA, flagMask=0x00080000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Yellowboze",              flagNum=0xA, flagMask=0x00100000, flagMax=0, enable=false, hexdisplay=false },
+    { description="Heart of Whitill",                 flagNum=0xA, flagMask=0x00200000, flagMax=0, enable=false, hexdisplay=false },
 }
 
 local _FlagsReaderDefaultOptions = {
@@ -250,10 +250,16 @@ local function PresentTopLevel()
                 -- Value column next
                 local flagValue = ReadGlobalFlagBitsWithPointer(ptr, v.flagNum, v.flagMask)
                 local s 
+                local m
                 if v.hexdisplay then
                     s = string.format("0x%X", flagValue)
+                    m = string.format("0x%X", v.flagMax)
                 else
                     s = string.format("%i", flagValue)
+                    m = string.format("%i", v.flagMax)
+                end
+                if v.flagMax > 0 then
+                    s = s .. "/" .. m
                 end
                 imgui.Text(s)
             
